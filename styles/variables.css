@@ -2,6 +2,11 @@
   --main-font: 'Inter';
   --accent-font: 'PressStart2P';
 
+  /* в макете в десктопной версии гап меньше чем в мобильной на несколько пикселей
+  в качестве эксперимента с помощью сайтов по рассчету clamp попробовал получить
+  плавный переход между ними */
+  --page-spacing: clamp(98px, calc(100.704px - 0.1878vw), 100px);
+
   --text-font-weight: 410;
   --heading-font-weight: 715;
 
@@ -35,4 +40,8 @@
     var(--accent-gradient-main-color) var(--accent-gradient-start-point),
     var(--accent-gradient-secondary-color)
   );
+
+  --content-color: #fff;
+  --content-width: clamp(375px, 90vw, 700px);
+  --content-border: 2px solid currentColor;
 }

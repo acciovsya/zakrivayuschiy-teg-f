@@ -13,14 +13,52 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  padding-block-start: 100px;
   font-family: var(--main-font), sans-serif;
   font-variation-settings: 'wght' var(--text-font-weight);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--page-spacing);
   background-image:
     var(--vertical-gradient), var(--horizontal-gradient), var(--accent-gradient);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.content {
+  background-color: var(--content-color);
+  width: var(--content-width);
+  border: var(--content-border);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: clamp(122px, 17vw, 130px);
+}
+
+.header__title-group {
+  font-family: var(--accent-font);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__title {
+  font-size: clamp(49px, 8.3vw, 65px);
+}
+
+.header__subtitle {
+  font-size: clamp(14px, 2.95vw, 23px);
+  text-transform: uppercase;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
