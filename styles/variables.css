@@ -4,4 +4,35 @@
 
   --text-font-weight: 410;
   --heading-font-weight: 715;
+
+  --grid-gradient-main-color: #d3d3d3;
+  --grid-gradient-secondary-color: transparent;
+  --grid-gradient-line-width: 2px;
+
+  --accent-gradient-main-color: #e7e7e7;
+  --accent-gradient-secondary-color: #1a1a1a;
+  --accent-gradient-start-point: 0.01%;
+
+  --vertical-gradient: repeating-linear-gradient(
+    90deg,
+    var(--grid-gradient-main-color) 0,
+    var(--grid-gradient-main-color) var(--grid-gradient-line-width),
+    var(--grid-gradient-secondary-color) var(--grid-gradient-line-width),
+    var(--grid-gradient-secondary-color)
+      calc(var(--grid-gradient-line-width) * 2)
+  );
+
+  --horizontal-gradient: repeating-linear-gradient(
+    180deg,
+    var(--grid-gradient-main-color) 0,
+    var(--grid-gradient-main-color) var(--grid-gradient-line-width),
+    var(--grid-gradient-secondary-color) var(--grid-gradient-line-width),
+    var(--grid-gradient-secondary-color)
+      calc(var(--grid-gradient-line-width) * 2)
+  );
+
+  --accent-gradient: linear-gradient(
+    var(--accent-gradient-main-color) var(--accent-gradient-start-point),
+    var(--accent-gradient-secondary-color)
+  );
 }

@@ -15,4 +15,12 @@
   min-block-size: 100dvb;
   font-family: var(--main-font), sans-serif;
   font-variation-settings: 'wght' var(--text-font-weight);
+  display: flex;
+  flex-direction: column;
+  gap: var(--page-spacing);
+  background-image:
+    var(--vertical-gradient), var(--horizontal-gradient), var(--accent-gradient);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
