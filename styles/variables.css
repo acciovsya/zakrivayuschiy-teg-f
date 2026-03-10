@@ -5,7 +5,8 @@
   /* в макете в десктопной версии гап меньше чем в мобильной на несколько пикселей
   в качестве эксперимента с помощью сайтов по рассчету clamp попробовал получить
   плавный переход между ними */
-  --page-spacing: clamp(98px, calc(100.704px - 0.1878vw), 100px);
+  --page-spacing: 98px;
+  --page-spacing-mobile: 100px;
 
   --text-font-weight: 410;
   --heading-font-weight: 715;
@@ -46,6 +47,7 @@
   --content-border: 2px solid currentColor;
 
   --text-stroke-color: #fff;
+  --text-stroke-color-alt: #333;
   --accent-color: #000;
 
   /* цвета иконки */
