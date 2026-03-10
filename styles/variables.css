@@ -44,4 +44,15 @@
   --content-color: #fff;
   --content-width: clamp(375px, 90vw, 700px);
   --content-border: 2px solid currentColor;
+
+  --text-stroke-color: #fff;
+  --accent-color: #000;
+
+  /* цвета иконки */
+  --animation-fill-color: #ff0000;
+
+  --animation-contour-color: #000;
+  --animation-main-body-color: transparent;
+  --animation-core-color: transparent;
+  --animation-sparks-color: #ff0000;
 }
