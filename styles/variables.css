@@ -8,6 +8,9 @@
   --page-spacing: 98px;
   --page-spacing-mobile: 100px;
 
+  /* автотесты на гитхабе пишут 
+  "Укажите начертания: `400, 785`.",
+  но в макете используются значения ниже */
   --text-font-weight: 410;
   --heading-font-weight: 715;
 

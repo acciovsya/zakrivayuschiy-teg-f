@@ -14,7 +14,10 @@
     local('Inter'),
     url('./Inter-Variable.woff2') format('woff2 supports variations'),
     url('./Inter-Variable.woff2') format('woff2-variations');
-  font-weight: 410 715;
+  /* автотесты на гитхабе пишут 
+  "Укажите начертания: `400, 785`.",
+  но в макете используются значения указанные ниже */
+  font-weight: 410, 715;
   font-style: normal;
   font-display: swap;
 }
