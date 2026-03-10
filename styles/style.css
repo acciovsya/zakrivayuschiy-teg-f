@@ -20,7 +20,6 @@
   background-image:
     var(--vertical-gradient), var(--horizontal-gradient), var(--accent-gradient);
   background-position: center;
-  background-size: cover;
   background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
@@ -28,9 +27,12 @@
 }
 
 .block {
+  inline-size: 100%;
+  max-inline-size: 700px;
   border: var(--content-border);
   background-color: var(--content-color);
-  inline-size: var(--content-width);
+  /* сначала использовал clamp для ширины контейнеров */
+  /* inline-size: var(--content-width); */
 }
 
 .header {
@@ -63,6 +65,8 @@
   gap: 50px;
 }
 
+/* стили карточки */
+
 .card {
   font-size: 18px;
 }
@@ -74,10 +78,12 @@
 
 .card__image-wrapper {
   position: relative;
+  overflow: hidden; /* для заблюренного изображения */
 }
 
 .card__image {
   width: 100%;
+  aspect-ratio: 1 / 1;
   border-block: var(--content-border);
   object-fit: cover;
 }
@@ -128,7 +134,6 @@
   background-color: var(--content-color);
   transition: box-shadow 0.3s ease;
   cursor: pointer;
-  white-space: nowrap;
 }
 
 .button-regular::before {
@@ -175,8 +180,8 @@
   background: none;
   transition: outline 0.3s ease;
   cursor: pointer;
-  max-inline-size: 34px;
-  max-block-size: 34px;
+  inline-size: 34px;
+  block-size: 34px;
 }
 
 .card__icon-button:focus {
@@ -187,23 +192,20 @@
   outline: 2px solid var(--accent-color);
 }
 
-.like-icon {
-  inline-size: 100%;
-  block-size: 100%;
+.card__like-button {
+  padding: 9px 17px;
+  min-inline-size: 130px;
 }
+
+/* диалоговое окно */
 
 .floppy-image {
   position: relative;
   z-index: 2;
   fill: var(--content-color);
-  min-inline-size: 39px;
-  min-block-size: 39px;
+  inline-size: 21px;
+  block-size: 21px;
   mix-blend-mode: difference;
-}
-
-.card__like-button {
-  padding: 9px 17px;
-  min-inline-size: 130px;
 }
 
 .save-button {
@@ -212,12 +214,16 @@
   padding: 15px 20px;
 }
 
+.save-button .button__text {
+  padding-block-start: 2px;
+}
+
 .save-dialog[open] {
   display: flex;
   flex-direction: column;
+  max-inline-size: 353px;
   gap: 30px;
   padding: 30px;
-  max-inline-size: min-content;
 }
 
 .save-dialog::backdrop {
@@ -232,6 +238,11 @@
   font-family: var(--accent-font), sans-serif;
 }
 
+.save-dialog__content .floppy-image {
+  min-inline-size: 39px;
+  min-block-size: 39px;
+}
+
 .save-dialog__text {
   line-height: 1.5em;
   text-transform: uppercase;
@@ -239,7 +250,6 @@
 
 .save-dialog__button {
   padding: 9px 17px;
-  min-inline-size: 293px;
 }
 
 /* иконка сердца */
@@ -316,10 +326,45 @@
   animation: sparks 0.3s ease-in 0.3s;
 }
 
+/* фильтры изображений */
+
+.card__image_desaturate {
+  filter: grayscale(70%);
+}
+
+.card__image_oversaturate {
+  filter: saturate(500%);
+}
+
+.card__image_hue {
+  filter: hue-rotate(30deg);
+}
+
+.card__image_invert {
+  filter: invert(75%);
+}
+
+.card__image_sepia {
+  filter: sepia(100%);
+}
+
+.card__image_blur {
+  filter: blur(20px);
+}
+
+.card__image_multi {
+  filter: hue-rotate(80deg) blur(1px) contrast(50%);
+}
+
 /* адаптивность */
 
 @media (width <= 375px) {
   .save-button {
     flex-direction: column;
+  }
+
+  .floppy-image {
+    inline-size: 28px;
+    block-size: 28px;
   }
 }
