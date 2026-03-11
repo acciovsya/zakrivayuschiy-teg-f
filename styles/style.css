@@ -10,16 +10,27 @@
 
 */
 
+/* Перевроверил в нескольких браузерах на всех разрешениях - 
+нижний и верхний отступ остаются 100px, как указано в макете.
+Не получилось увидеть такой результат, как у Вас на скриншоте */
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--page-spacing);
-  padding-block: 100px;
+  /* возможно изменение паддинга на марджин 
+  может исправить тот отступ, что Вы обнаружили,
+  а связано это скеорее всего с задачей минимальной 
+  высоты блоку (было в проекте изначально) */
+  margin-block: 100px;
   font-family: var(--main-font), sans-serif;
   background-image:
     var(--vertical-gradient), var(--horizontal-gradient), var(--accent-gradient);
   background-attachment: fixed;
+  /* так как в качестве фона мы используем repeating-linear-gradient, 
+  который и так растягивается сам в отличие от картинок, 
+  а linear-gradient изначально занимает весь фон - нам по идее здесь не нужен
+  background-size: cover */
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-variation-settings: 'wght' var(--text-font-weight);
@@ -36,9 +47,12 @@
 
 .header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   padding-block: clamp(122px, 17vw, 130px);
+  font-family: var(--accent-font), sans-serif;
 }
 
 .header__title-group {
@@ -51,6 +65,7 @@
 
 .header__title {
   font-size: clamp(49px, 8.3vw, 65px);
+  text-transform: uppercase;
 }
 
 .header__subtitle {
@@ -78,12 +93,15 @@
 
 .card__image-wrapper {
   position: relative;
+  border-block: var(--content-border);
   overflow: hidden; /* для заблюренного изображения */
+  /* был зазор между границей обертки и картинкой
+  вместо обращения картинки в блочный элемент решил сделать так */
+  line-height: 0;
 }
 
 .card__image {
   width: 100%;
-  border-block: var(--content-border);
   object-fit: cover;
   aspect-ratio: 1 / 1;
 }
@@ -95,6 +113,7 @@
   opacity: 0.5;
   font-family: var(--accent-font), sans-serif;
   font-size: 14px;
+  text-transform: uppercase;
   text-shadow:
     1px 0 var(--text-stroke-color),
     -1px 0 var(--text-stroke-color),
@@ -110,6 +129,7 @@
 
 @supports (-webkit-text-stroke: 1px var(--text-stroke-color)) {
   .card__label {
+    text-shadow: none;
     text-stroke: 1px var(--text-stroke-color);
     -webkit-text-stroke: 1px var(--text-stroke-color);
   }
@@ -144,9 +164,8 @@
 .button-regular::before {
   content: '';
   position: absolute;
+  inset: 0;
   z-index: 1;
-  width: 100%;
-  height: 100%;
   background-color: var(--accent-color);
   transition: transform 0.5s ease-in-out;
   transform: translateX(-100%);
@@ -223,6 +242,9 @@
   padding-block-start: 2px;
 }
 
+/* некоторы стили и так уже определены селектором .block
+я не смог найти более изящного решения, кроме как дополнительно
+сначала сбрасывать необходимые свойства там */
 .save-dialog[open] {
   display: flex;
   flex-direction: column;
@@ -255,6 +277,7 @@
 
 .save-dialog__button {
   padding: 9px 17px;
+  text-transform: uppercase;
 }
 
 /* иконка сердца */
@@ -309,12 +332,12 @@
 }
 
 .like-icon.is-liked .heart {
-  animation: pulse 0.3s ease-in 0.1s;
+  animation: changeScale 0.3s ease-in 0.1s;
 }
 
 .like-icon.is-liked .contour {
-  fill: var(--animation-fill-color);
-  transition: fill 0.1s 0s linear;
+  --animation-contour-color: var(--animation-fill-color);
+  transition: fill 0.3s 0.06s linear;
 }
 
 .like-icon.is-liked .main-body {
@@ -328,7 +351,7 @@
 }
 
 .like-icon.is-liked .sparks {
-  animation: sparks 0.3s ease-in 0.3s;
+  animation: changeOpacity 0.3s ease-in 0.3s;
 }
 
 /* фильтры изображений */
